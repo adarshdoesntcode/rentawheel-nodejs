@@ -1,0 +1,25 @@
+<html lang="en">
+
+  <head>
+    <title>RentAWheel.</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/allvehicles.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <h1><a href="/adminpage">RentA<span id="wheel">Wheel.</span></a></h1>
+    <p class="admin-name">Admin: <span>{{name}}</span></p>
+
+    <div class="wrapper">
+      {{! dynamically generated }}
+    </div>
+
+    <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+    <script src="/js/renderallvehicles.js"></script>
+  </body>
+
+</html>

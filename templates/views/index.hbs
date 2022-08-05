@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+    <title>RentAWheel.</title>
+  </head>
+  <body>
+    <h1>RentA<span id="wheel">Wheel.</span></h1>
+
+    <div class="login-page">
+      <div class="form">
+        <form class="register-form">
+          <input type="text" id="name" name="name" placeholder="name" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email address"
+          />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+          />
+          <button type="submit">create</button>
+          <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form class="login-form">
+          <input
+            type="email"
+            id="login-email"
+            name="email"
+            placeholder="email"
+          />
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            placeholder="password"
+          />
+          <button type="submit">login</button>
+          <p class="message">Not registered?
+            <a href="#">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+    <script src="/js/clientloginEvent.js"></script>
+  </body>
+</html>

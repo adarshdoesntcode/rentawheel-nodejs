@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/cards.css" />
+    <title>RentAWheel.</title>
+  </head>
+  <body>
+    <nav class="flex align-center">
+      <p>
+        <a style="font-size: 28px ;" href="/dashboard">
+          RentA<span>Wheel.</span></a></p>
+      <ul>
+        <li class="big-screens">
+
+          <a href="#">{{client}}</a>
+          <a href="#"><img
+              style="width: 50px; border-radius: 50%;"
+              src="https://png.pngitem.com/pimgs/s/22-223925_female-avatar-female-avatar-no-face-hd-png.png"
+            /></a>
+          {{! <button class="btn register">Register</button> }}
+          <button class="btn login" id="logout-client">Logout ✌️</button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="product-cards">
+    </div>
+
+    <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+    <script src="/js/dashboard.js"></script>
+
+  </body>
+</html>
