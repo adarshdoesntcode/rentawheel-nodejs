@@ -19,7 +19,40 @@ const sendGoodbyeEmail = (email, name) => {
   });
 };
 
+const sendBookinngEmail = (
+  email,
+  name,
+  model,
+  receivername,
+  pickupdate,
+  dropoffdate,
+  payableamt,
+  otp,
+  imgurl,
+  receiverlicense
+) => {
+  sgMail.send({
+    to: email,
+    from: 'customercare.rentawheel@hotmail.com',
+    subject: "Booking Successful",
+    templateId: 'd-8643ae452b114ddfbb62c48e51c93213',
+    dynamicTemplateData: {
+      name,
+      model,
+      receivername,
+      pickupdate,
+      dropoffdate,
+      payableamt,
+      otp,
+      imgurl,
+      receiverlicense
+    }
+  })
+
+};
+
 module.exports = {
   sendWelcomeEmail,
   sendGoodbyeEmail,
+  sendBookinngEmail
 };

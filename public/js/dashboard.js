@@ -6,7 +6,6 @@ const renderDashboard = async () => {
       method: "GET",
       url: "http://127.0.0.1:3000/dashboardvehicles/?sortBy=createdAt:desc",
     });
-    console.log(res.data);
     dashboardProducts = res.data
       .map((product) => {
         return `
@@ -21,7 +20,7 @@ const renderDashboard = async () => {
           Boot Capacity: ${product.bootcapacity} ltrs.<br> 
           Kilometers Driven: ${product.kilometersdriven} km.<br> 
           <strong>Available Units: ${product.availablestock}</strong><br> 
-          <a href="#">Rent.</a>
+          <a href="/clients/rent/${product._id}">Rent.</a>
         </figcaption>
       </figure>
       `;

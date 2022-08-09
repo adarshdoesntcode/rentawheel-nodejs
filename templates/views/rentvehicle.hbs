@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+
+  <link rel="stylesheet" href="/css/rentvehicle.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <title>RentAWheel.</title>
+</head>
+<body>
+      <nav class="flex align-center">
+      <p>
+        <a style="font-size: 28px ;" href="/dashboard">
+          RentA<span>Wheel.</span></a></p>
+      <ul>
+        <li class="big-screens">
+
+          <a href="/profile">{{client}}</a>
+          <a href="/profile"><img
+              style="width: 50px; border-radius: 50%;"
+              src="https://png.pngitem.com/pimgs/s/22-223925_female-avatar-female-avatar-no-face-hd-png.png"
+            /></a>
+          {{! <button class="btn register">Register</button> }}
+          <button class="btn login" id="logout-client">Logout ✌️</button>
+        </li>
+      </ul>
+    </nav>
+
+
+
+	<main>
+  <section class="product-detail">
+    <div class="imagery">
+      <img
+        data-url="{{imgurl}}"
+        src="{{imgurl}}"
+        class="image"
+      />
+      <div>
+        <p class="termsandcond">
+          Terms and Conditions: <br>
+          <br>
+          1. If you are renting a gas vehicle you must fill up the tank before returning the vehicle. <br>
+          2. You are be liable for any physical damages on the vehicle during your ownership.<br>
+          3. Electric vehicles must be returned will full battery charge.<br>
+          4. Legal actions will be taken if the customer is unable to return the vehicle in the defined time period.<br>
+          5. Your license and other gov. documents will be verified before lending you the vehicle.
+        </p>
+      </div>
+    </div>
+
+    <div class="detail">
+      <h1 data-model="{{model}}" id="model">{{model}}</h1>
+      <p>{{type}}</p>
+          Seat Capacity: {{seatcapacity}} adults<br> 
+          Boot Capacity: {{bootcapacity}} ltrs.<br> 
+          Kilometers Driven: {{kilometersdriven}} km.<br> 
+          <br>
+          <strong style="font-size:20px;">Payable Amount: Rs. <span id="rate" style="color:#4caf50; ;">{{rate}}</span> for <span id="days" style="color:#4caf50;">1</span> day/s </strong><br> 
+      <div class="options">
+        <h2>Pick your dates</h2>
+        <div class="capacity btn-grid">
+          <div class="btn-wrap">
+            <input id="datepicker-pick" type="date" placeholder="Pick up Date" class="size datepickerinput">
+          </div>
+          <div class="btn-wrap">
+            <input type="date" id="datepicker-drop" placeholder="Drop off Date" class="size datepickerinput">
+          </div>
+        </div>
+
+        <h2>Fill the Driver's Details</h2>
+        <div class="colors btn-grid">
+          <div class="btn-wrap">
+            <input
+              placeholder="Name.."
+              id="rent-name"
+              class="color blue"
+              data-name="blue"
+              data-color="#2484e4"
+            >
+          </div>
+
+          <div class="btn-wrap">
+             <input
+              placeholder="Contact.."
+              id="rent-phone"
+              class="color blue"
+              data-name="blue"
+              data-color="#2484e4"
+            >
+           
+          </div>
+
+          <div class="btn-wrap">
+             <input
+              placeholder="License No.."
+              id="rent-license"
+              class="color blue"
+              data-name="blue"
+              data-color="#2484e4"
+            >
+          </div>
+
+          </div>
+        </div>
+        <button data-id="{{_id}}" type="submit" class="submit">Book my Vehicle..</button>
+      </div>
+    </div>
+  </section>
+</main>
+ <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="/js/dashboard.js"></script>
+<script src="/js/rentvehicle.js"></script>
+</body>
+</html>

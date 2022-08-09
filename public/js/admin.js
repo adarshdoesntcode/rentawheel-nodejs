@@ -14,6 +14,10 @@ document.querySelector("#show-vehicles").addEventListener("click", (e) => {
   location.assign("/renderVehicles");
 });
 
+document.querySelector("#vehicles-bookings").addEventListener("click", (e) => {
+  location.assign("/vehiclebookings");
+});
+
 document.querySelector("#add-vehicles").addEventListener("click", (e) => {
   location.assign("/addVehicles");
 });

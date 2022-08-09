@@ -2,8 +2,11 @@ const express = require("express");
 const multer = require("multer");
 const sharp = require("sharp");
 const Users = require("../models/users");
+const Bookings = require("../models/bookings");
+const Vehicles = require("../models/vehicles");
 const auth = require("../middleware/auth");
 const { sendWelcomeEmail, sendGoodbyeEmail } = require("../email/account");
+
 
 const router = new express.Router();
 
@@ -185,5 +188,116 @@ router.get("/logoutadmin", auth, async (req, res) => {
     res.status(500).send(e);
   }
 });
+
+
+router.get("/allbookings",auth,async (req,res)=>{
+  const sort = {};
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(":");
+    sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
+  }
+  try {
+    const bookings = await Bookings.find({
+      options:{
+        sort
+      }
+    });
+    if (!bookings) {
+      return res.status(404).send();
+    }
+    res.send(bookings);
+  } catch (e) {
+    res.status(500).send();
+  }
+})
+
+
+router.get("/selectbooking/:id",auth,async (req,res)=>{
+  const _id = req.params.id;
+try{
+  const booking = await Bookings.findOne({
+    _id
+  })
+
+  if(!booking){
+    return res.status(404).send("Not Found");
+  }
+
+  res.render("verifybooking",{
+    booking
+  })
+}
+catch(e){
+  res.status(500).send("Internal Error")
+}
+
+
+})
+
+router.post("/verifyotp/:id",auth,async (req,res)=>{
+  const _id = req.params.id;
+  const otp = req.body.otpcode;
+  const vid = req.body.vid;
+
+try{
+  const verify = await Bookings.findOneAndUpdate({
+    _id,
+    otp
+  },{
+    otp:"Matched",
+    status:"Verified"
+  },{
+    new:true
+  })
+  if(verify){
+    const vehicle = await Vehicles.findOne({_id:vid});
+    const stock = parseInt(vehicle.availablestock) - 1;
+    const update = await Vehicles.findOneAndUpdate({
+      _id:vid
+    },{
+      availablestock: stock
+    },{
+      new:true
+    })
+  }
+  res.send(verify)
+
+}
+catch(e){
+  res.status(500).send("Internal Error")
+}
+})
+
+router.post("/completetransaction/:id",auth,async (req,res)=>{
+  const _id = req.params.id;
+  const vid = req.body.vid;
+
+try{
+  const verify = await Bookings.findOneAndUpdate({
+    _id,
+    status:"Verified"
+  },{
+    status:"Complete"
+  },{
+    new:true
+  })
+  if(verify){
+    const vehicle = await Vehicles.findOne({_id:vid});
+    const stock = parseInt(vehicle.availablestock) + 1;
+    const update = await Vehicles.findOneAndUpdate({
+      _id:vid
+    },{
+      availablestock: stock
+    },{
+      new:true
+    })
+  }
+  res.status(200).send(verify)
+
+}
+catch(e){
+  res.status(500).send("Internal Error")
+}
+})
 
 module.exports = router;

@@ -5,6 +5,7 @@ const path = require("path");
 const hbs = require("hbs");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const bodyParser = require('body-parser');
 
 require("./db/mongoose");
 
@@ -27,6 +28,7 @@ app.set("views", viewsDirectoryPath);
 app.use(express.static(publicDirectoryPath));
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.json()); //converts json response into object
 app.use(userRouter);

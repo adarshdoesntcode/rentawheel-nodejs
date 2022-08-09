@@ -79,7 +79,7 @@ router.get("/dashboardvehicles", clientAuth, async (req, res) => {
     res.status(500).send();
   }
 });
-// -----------------GET VEHICLE BY ID----------------
+// -----------------GET ALL VEHICLE----------------
 
 router.get("/allvehicles/", auth, async (req, res) => {
   try {
@@ -93,20 +93,29 @@ router.get("/allvehicles/", auth, async (req, res) => {
   }
 });
 
-// -----------------GET ALL VEHICLE----------------
+// -----------------RENT VEHICLE BY ID----------------
 
-router.get("/vehicles/", auth, async (req, res) => {
+router.get("/clients/rent/:id", clientAuth, async (req, res) => {
   const _id = req.params.id;
 
   try {
     const vehicle = await Vehicles.findOne({
-      _id,
-      author: req.authorizedUser._id,
+      _id
     });
     if (!vehicle) {
       return res.status(404).send();
     }
-    res.send(vehicle);
+    res.render("rentvehicle", {
+      client:req.authorizedClient.name.split(" ")[0],
+      _id:vehicle.id,
+      model:vehicle.model,
+      type:vehicle.type,
+      imgurl:vehicle.imgurl,
+      seatcapacity:vehicle.seatcapacity,
+      bootcapacity:vehicle.bootcapacity,
+      kilometersdriven:vehicle.kilometersdriven,
+      rate:vehicle.rate
+    });
   } catch (e) {
     res.status(500).send();
   }
@@ -150,6 +159,7 @@ router.patch("/vehicles/:id", auth, async (req, res) => {
 // -----------------DELETE VEHICLE ----------------
 
 router.delete("/vehicles/:id", auth, async (req, res) => {
+  
   const _id = req.params.id;
   try {
     const vehicle = await Vehicles.findOneAndDelete({

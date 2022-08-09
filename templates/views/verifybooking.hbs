@@ -1,4 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+
+    @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -120,3 +129,41 @@ a {
 .product-links a:hover {
   color: #fbb72c;
 }
+
+  </style>
+  <title>RentAWheel</title>
+</head>
+<body>
+    <a href="/adminpage"><h1>RentA<span id="wheel">Wheel.</span></h1></a>
+              
+          <div class="product-card">
+          <div class="product-tumb">
+   <img src="{{booking.imgurl}}" alt="">
+</div> 
+  
+            <div class="product-details">
+              <span class="product-catagory">Status: {{booking.status}}</span>
+              <h4><a href="">{{booking.model}}</a></h4>
+              <p >Booking ID:<span data-vid="{{booking.vehicleid}}" id="boid">{{booking._id}}</span><br>
+              Driver's Name: {{booking.clientname}} <br> 
+              Driver's Contact: {{booking.clientcontact}} <br> 
+              Driver's License: {{booking.clientlicense}} <br> 
+              Pickup Date: {{booking.pickupdate}}<br> 
+              Dropoff Date: {{booking.dropoffdate}}<br> 
+              <div class="product-bottom-details">
+                <div class="product-price">Rs.{{booking.payableamt}}</div>
+                <div>
+                <input type="text" id="otp" placeholder="OTP"> </a>
+                <input type="button" id="verify" value="Verify"> </a>
+                <input type="button" id="complete" value="Complete"> </a>
+                
+                </div>
+
+              </div>
+            </div>
+          </div>
+    <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+
+        <script src="/js/verifyotp.js"></script>
+</body>
+</html>

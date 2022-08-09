@@ -20,7 +20,7 @@ figure.snip1171 {
   min-width: 220px;
   max-width: 380px;
   width: 100%;
-  background: #000000;
+  /* background: #000000; */
   color: #333;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -52,7 +52,7 @@ figure.snip1171 h3 {
   margin: 0;
   left: 0;
   font-weight: 400;
-  background-color: #0000003d;
+  background-color: #0000005b;
   color: #ffffff;
   /* border-radius: 8px; */
 }
